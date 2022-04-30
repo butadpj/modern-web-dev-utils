@@ -1,0 +1,33 @@
+{
+  "name": "modern-web-dev-utils",
+  "version": "1.0.0",
+  "description": "Utility functions for modern-web-dev package",
+  "main": "dist/index.js",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest --watch",
+    "build": "tsc --build --clean && tsc --build"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
+  },
+  "keywords": [
+    "modern-web-dev-utility-functions"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/node": "^17.0.30",
+    "babel-jest": "^28.0.3",
+    "jest": "^27.5.1",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "html-webpack-plugin": "^5.5.0"
+  }
+}
