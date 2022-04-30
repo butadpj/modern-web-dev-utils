@@ -1,0 +1,1 @@
+export { PageTemplatesInterface } from './PageTemplatesInterface';

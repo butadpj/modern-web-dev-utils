@@ -2,6 +2,8 @@ import path from 'path';
 import fs from 'fs';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
+import { PageTemplatesInterface } from './interface';
+
 export const getPageNamesIn = (directory = './pages'): Array<string> =>
   fs
     .readdirSync(directory, { withFileTypes: true })
@@ -17,7 +19,10 @@ export const getScriptFoldersIn = (directory = './script'): Array<string> =>
     .filter((item: any) => item.isDirectory())
     .map((item: any) => item.name);
 
-export const createPageTemplates = (pageNames = [], scriptFolders = []) => {
+export const createPageTemplates = (
+  pageNames: Array<string>,
+  scriptFolders: Array<string>,
+): Array<PageTemplatesInterface> => {
   return pageNames.map((name, index) => {
     if (name === scriptFolders[index]) {
       return {
@@ -31,7 +36,9 @@ export const createPageTemplates = (pageNames = [], scriptFolders = []) => {
   });
 };
 
-export const htmlWebpackPluginTemplates = (pageTemplates = []) =>
+export const htmlWebpackPluginTemplates = (
+  pageTemplates: Array<PageTemplatesInterface>,
+): Array<HtmlWebpackPlugin> =>
   pageTemplates.map(({ name, chunk }) => {
     if (chunk)
       return new HtmlWebpackPlugin({
