@@ -1,6 +1,6 @@
 {
   "name": "modern-web-dev-utils",
-  "version": "1.0.3",
+  "version": "1.0.2",
   "description": "Utility functions for modern-web-dev package",
   "main": "dist/index.js",
   "type": "module",
