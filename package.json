@@ -14,6 +14,10 @@
       "^.+\\.[t|j]sx?$": "babel-jest"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/butadpj/modern-web-dev-utils.git"
+  },
   "keywords": [
     "modern-web-dev-utility-functions"
   ],
@@ -29,5 +33,9 @@
   },
   "dependencies": {
     "html-webpack-plugin": "^5.5.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/butadpj/modern-web-dev-utils/issues"
+  },
+  "homepage": "https://github.com/butadpj/modern-web-dev-utils#readme"
 }
