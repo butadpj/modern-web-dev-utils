@@ -4,6 +4,8 @@ import {
   createPageTemplates,
   getScriptFoldersIn,
   htmlWebpackPluginTemplates,
+  getPagesTemplateWithChunk,
+  getPageTemplatesChunkEntryPoints,
 } from '../index';
 
 describe('Test utility functions', () => {
@@ -70,5 +72,42 @@ describe('Test utility functions', () => {
     );
 
     expect(pluginTemplates).toEqual(expectedResult);
+  });
+
+  test('getPagesTemplateWithChunk() should return all page templates with chunks', () => {
+    const expectedResult = [
+      {
+        name: 'about.html',
+        chunk: 'about',
+      },
+      {
+        name: 'index.html',
+        chunk: 'index',
+      },
+    ];
+
+    expect(
+      getPagesTemplateWithChunk(
+        './src/__tests__/pages',
+        './src/__tests__/script',
+      ),
+    ).toEqual(expectedResult);
+  });
+
+  test('getPageTemplatesChunkEntryPoints() should return the webpack entry points for page templates with chunk', () => {
+    const expectedResult = {
+      about: './script/about/main.js',
+      index: './script/index/main.js',
+    };
+
+    expect(
+      getPageTemplatesChunkEntryPoints(
+        getPagesTemplateWithChunk(
+          './src/__tests__/pages',
+          './src/__tests__/script',
+        ),
+        './script',
+      ),
+    ).toEqual(expectedResult);
   });
 });
