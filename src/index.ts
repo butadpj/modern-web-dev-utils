@@ -2,7 +2,10 @@ import path from 'path';
 import fs from 'fs';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-import { PageTemplatesInterface } from './interface';
+import {
+  PageTemplatesChunkInterface,
+  PageTemplatesInterface,
+} from './interface';
 
 export const getPageNamesIn = (directory = './pages'): Array<string> =>
   fs
@@ -52,3 +55,28 @@ export const htmlWebpackPluginTemplates = (
       template: `./pages/${name}`,
     });
   });
+
+export const getPagesTemplateWithChunk = (
+  pagesDirectory = './pages',
+  scriptDirectory = './script',
+): Array<PageTemplatesInterface> => {
+  return createPageTemplates(
+    getPageNamesIn(pagesDirectory),
+    getScriptFoldersIn(scriptDirectory),
+  )
+    .filter((pageTemplate) => pageTemplate.chunk)
+    .map((pageTemplate) => pageTemplate);
+};
+
+export const getPageTemplatesChunkEntryPoints = (
+  pagesTemplateWithChunk: Array<PageTemplatesInterface>,
+  scriptDirectory = './script',
+): PageTemplatesChunkInterface => {
+  return pagesTemplateWithChunk.reduce(
+    (entryPoints, item) => ({
+      ...entryPoints,
+      [item.chunk]: `${scriptDirectory}/${item.chunk}/main.js`,
+    }),
+    {},
+  );
+};
