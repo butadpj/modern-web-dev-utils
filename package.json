@@ -19,7 +19,9 @@
     "url": "git+https://github.com/butadpj/modern-web-dev-utils.git"
   },
   "keywords": [
-    "modern-web-dev-utility-functions"
+    "modern-web-dev-utility-functions",
+    "package",
+    "utility"
   ],
   "author": "",
   "license": "ISC",
