@@ -11,16 +11,18 @@ export const getPageNamesIn = (directory = './pages'): Array<string> =>
   fs
     .readdirSync(directory, { withFileTypes: true })
     .filter(
-      (item: any) =>
+      (item: fs.Dirent) =>
         !item.isDirectory() && path.parse(item.name).ext === '.html',
     )
     .map(({ name }) => path.parse(name).name);
 
-export const getScriptFoldersIn = (directory = './script'): Array<string> =>
+export const getScriptFoldersIn = (directory = './script'): Array<any> =>
   fs
     .readdirSync(directory, { withFileTypes: true })
-    .filter((item: any) => item.isDirectory())
-    .map((item: any) => item.name);
+    .filter((item: fs.Dirent) => {
+      return fs.existsSync(`${directory}/${item.name}/main.js`);
+    })
+    .map((item) => item.name);
 
 export const createPageTemplates = (
   pageNames: Array<string>,

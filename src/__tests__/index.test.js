@@ -16,7 +16,7 @@ describe('Test utility functions', () => {
   });
 
   test('getScriptFoldersIn() should get all script folders in a given directory', () => {
-    const expectedResult = ['about', 'index', 'no-corresponding-page'];
+    const expectedResult = ['about', 'index'];
 
     expect(getScriptFoldersIn('./src/__tests__/script')).toEqual(
       expectedResult,
