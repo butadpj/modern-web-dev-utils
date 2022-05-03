@@ -58,7 +58,7 @@ export const htmlWebpackPluginTemplates = (
     });
   });
 
-export const getPagesTemplateWithChunk = (
+export const getPageTemplatesWithChunk = (
   pagesDirectory = './pages',
   scriptDirectory = './script',
 ): Array<PageTemplatesInterface> => {
@@ -71,10 +71,10 @@ export const getPagesTemplateWithChunk = (
 };
 
 export const getPageTemplatesChunkEntryPoints = (
-  pagesTemplateWithChunk: Array<PageTemplatesInterface>,
+  pageTemplatesWithChunk: Array<PageTemplatesInterface>,
   scriptDirectory = './script',
 ): PageTemplatesChunkInterface => {
-  return pagesTemplateWithChunk.reduce(
+  return pageTemplatesWithChunk.reduce(
     (entryPoints, item) => ({
       ...entryPoints,
       [item.chunk]: `${scriptDirectory}/${item.chunk}/main.js`,
