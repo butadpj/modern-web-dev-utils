@@ -11,7 +11,7 @@ export const getPageNamesIn = (directory = './pages'): Array<string> =>
   fs
     .readdirSync(directory, { withFileTypes: true })
     .filter(
-      (item: any) =>
+      (item: fs.Dirent) =>
         !item.isDirectory() && path.parse(item.name).ext === '.html',
     )
     .map(({ name }) => path.parse(name).name);
@@ -19,8 +19,10 @@ export const getPageNamesIn = (directory = './pages'): Array<string> =>
 export const getScriptFoldersIn = (directory = './script'): Array<string> =>
   fs
     .readdirSync(directory, { withFileTypes: true })
-    .filter((item: any) => item.isDirectory())
-    .map((item: any) => item.name);
+    .filter((item: fs.Dirent) => {
+      return fs.existsSync(`${directory}/${item.name}/main.js`);
+    })
+    .map((item) => item.name);
 
 export const createPageTemplates = (
   pageNames: Array<string>,
@@ -56,7 +58,7 @@ export const htmlWebpackPluginTemplates = (
     });
   });
 
-export const getPagesTemplateWithChunk = (
+export const getPageTemplatesWithChunk = (
   pagesDirectory = './pages',
   scriptDirectory = './script',
 ): Array<PageTemplatesInterface> => {
@@ -69,10 +71,10 @@ export const getPagesTemplateWithChunk = (
 };
 
 export const getPageTemplatesChunkEntryPoints = (
-  pagesTemplateWithChunk: Array<PageTemplatesInterface>,
+  pageTemplatesWithChunk: Array<PageTemplatesInterface>,
   scriptDirectory = './script',
 ): PageTemplatesChunkInterface => {
-  return pagesTemplateWithChunk.reduce(
+  return pageTemplatesWithChunk.reduce(
     (entryPoints, item) => ({
       ...entryPoints,
       [item.chunk]: `${scriptDirectory}/${item.chunk}/main.js`,
