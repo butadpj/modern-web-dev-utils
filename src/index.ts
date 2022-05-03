@@ -16,7 +16,7 @@ export const getPageNamesIn = (directory = './pages'): Array<string> =>
     )
     .map(({ name }) => path.parse(name).name);
 
-export const getScriptFoldersIn = (directory = './script'): Array<any> =>
+export const getScriptFoldersIn = (directory = './script'): Array<string> =>
   fs
     .readdirSync(directory, { withFileTypes: true })
     .filter((item: fs.Dirent) => {
