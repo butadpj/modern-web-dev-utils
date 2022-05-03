@@ -90,3 +90,13 @@ Utility functions for [create-modern-web-dev](https://www.npmjs.com/package/crea
     'with-chunk': './script/with-chunk/main.js',
   };
   ```
+
+---
+
+#### How I worked on this project
+
+My goal was to create a utility function for (multi-pages web app) webpack configuration
+
+- I used TypeScript to create robust and easy to use functions: [See functions](https://github.com/butadpj/modern-web-dev-utils/blob/master/src/index.ts)
+
+- I used Jest to ensure all functions are working as expected: [Screenshot of test result](https://github.com/butadpj/modern-web-dev-utils/blob/master/screenshots/test_result.png)
