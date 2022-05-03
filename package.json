@@ -1,7 +1,7 @@
 {
   "name": "modern-web-dev-utils",
   "version": "1.1.2",
-  "description": "Utility functions for modern-web-dev package",
+  "description": "Utility functions for create-modern-web-dev",
   "main": "dist/index.js",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -12,7 +12,10 @@
   "jest": {
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"
-    }
+    },
+    "testPathIgnorePatterns": [
+      "./src/__tests__/script"
+    ]
   },
   "repository": {
     "type": "git",
