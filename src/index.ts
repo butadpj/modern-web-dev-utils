@@ -28,8 +28,8 @@ export const createPageTemplates = (
   pageNames: Array<string>,
   scriptFolders: Array<string>,
 ): Array<PageTemplatesInterface> => {
-  return pageNames.map((name, index) => {
-    if (name === scriptFolders[index]) {
+  return pageNames.map((name) => {
+    if (scriptFolders.includes(name)) {
       return {
         name: `${name}.html`,
         chunk: name,
