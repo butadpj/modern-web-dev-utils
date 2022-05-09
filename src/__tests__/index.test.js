@@ -10,13 +10,13 @@ import {
 
 describe('Test utility functions', () => {
   test('getPageNamesIn() should get all HTML file names in a given directory', () => {
-    const expectedResult = ['about', 'index', 'no-chunk'];
+    const expectedResult = ['about', 'index', 'no-chunk', 'project-bracketour'];
 
     expect(getPageNamesIn('./src/__tests__/pages')).toEqual(expectedResult);
   });
 
   test('getScriptFoldersIn() should get all script folders in a given directory', () => {
-    const expectedResult = ['about', 'index'];
+    const expectedResult = ['about', 'index', 'project-bracketour'];
 
     expect(getScriptFoldersIn('./src/__tests__/script')).toEqual(
       expectedResult,
@@ -35,6 +35,10 @@ describe('Test utility functions', () => {
       },
       {
         name: 'no-chunk.html',
+      },
+      {
+        name: 'project-bracketour.html',
+        chunk: 'project-bracketour',
       },
     ];
 
@@ -62,6 +66,11 @@ describe('Test utility functions', () => {
         filename: 'no-chunk.html',
         template: `./pages/no-chunk.html`,
       }),
+      new HtmlWebpackPlugin({
+        filename: 'project-bracketour.html',
+        template: `./pages/project-bracketour.html`,
+        chunks: ['project-bracketour'],
+      }),
     ];
 
     const pluginTemplates = htmlWebpackPluginTemplates(
@@ -84,6 +93,10 @@ describe('Test utility functions', () => {
         name: 'index.html',
         chunk: 'index',
       },
+      {
+        name: 'project-bracketour.html',
+        chunk: 'project-bracketour',
+      },
     ];
 
     expect(
@@ -98,6 +111,7 @@ describe('Test utility functions', () => {
     const expectedResult = {
       about: './script/about/main.js',
       index: './script/index/main.js',
+      'project-bracketour': './script/project-bracketour/main.js',
     };
 
     expect(
