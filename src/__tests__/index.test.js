@@ -18,7 +18,7 @@ describe('Test utility functions', () => {
   test('getScriptFoldersIn() should get all script folders in a given directory', () => {
     const expectedResult = ['about', 'index', 'project-bracketour'];
 
-    expect(getScriptFoldersIn('./src/__tests__/script')).toEqual(
+    expect(getScriptFoldersIn('./src/__tests__/scripts')).toEqual(
       expectedResult,
     );
   });
@@ -45,7 +45,7 @@ describe('Test utility functions', () => {
     expect(
       createPageTemplates(
         getPageNamesIn('./src/__tests__/pages'),
-        getScriptFoldersIn('./src/__tests__/script'),
+        getScriptFoldersIn('./src/__tests__/scripts'),
       ),
     ).toEqual(expectedResult);
   });
@@ -76,7 +76,7 @@ describe('Test utility functions', () => {
     const pluginTemplates = htmlWebpackPluginTemplates(
       createPageTemplates(
         getPageNamesIn('./src/__tests__/pages'),
-        getScriptFoldersIn('./src/__tests__/script'),
+        getScriptFoldersIn('./src/__tests__/scripts'),
       ),
     );
 
@@ -102,25 +102,25 @@ describe('Test utility functions', () => {
     expect(
       getPageTemplatesWithChunk(
         './src/__tests__/pages',
-        './src/__tests__/script',
+        './src/__tests__/scripts',
       ),
     ).toEqual(expectedResult);
   });
 
   test('getPageTemplatesChunkEntryPoints() should return the webpack entry points for page templates with chunk', () => {
     const expectedResult = {
-      about: './script/about/main.js',
-      index: './script/index/main.js',
-      'project-bracketour': './script/project-bracketour/main.js',
+      about: './scripts/about/main.js',
+      index: './scripts/index/main.js',
+      'project-bracketour': './scripts/project-bracketour/main.js',
     };
 
     expect(
       getPageTemplatesChunkEntryPoints(
         getPageTemplatesWithChunk(
           './src/__tests__/pages',
-          './src/__tests__/script',
+          './src/__tests__/scripts',
         ),
-        './script',
+        './scripts',
       ),
     ).toEqual(expectedResult);
   });

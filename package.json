@@ -14,7 +14,7 @@
       "^.+\\.[t|j]sx?$": "babel-jest"
     },
     "testPathIgnorePatterns": [
-      "./src/__tests__/script"
+      "./src/__tests__/scripts"
     ]
   },
   "repository": {
