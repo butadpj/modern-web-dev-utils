@@ -11,7 +11,7 @@ Utility functions for [create-modern-web-dev](https://www.npmjs.com/package/crea
 - **getScriptFoldersIn(directory)** - Get all script folders (should have main.js file inside) in a given directory
 
   ```js
-  getScriptFoldersIn('./script'); //['index', 'with-scrpit'];
+  getScriptFoldersIn('./scripts'); //['index', 'with-scrpit'];
   ```
 
 - **createPageTemplates(pageNames, scriptFolders)** - Create page templates for each pages with or without script
@@ -19,7 +19,7 @@ Utility functions for [create-modern-web-dev](https://www.npmjs.com/package/crea
   ```js
   createPageTemplates(
     getPageNamesIn('./pages'),
-    getScriptFoldersIn('./script')
+    getScriptFoldersIn('./scripts')
   );
 
   // if the page has corresponding script (with chunk)
@@ -40,7 +40,7 @@ Utility functions for [create-modern-web-dev](https://www.npmjs.com/package/crea
   htmlWebpackPluginTemplates(
     createPageTemplates(
       getPageNamesIn('./pages'),
-      getScriptFoldersIn('./script'),
+      getScriptFoldersIn('./scripts'),
     ),
   );
 
@@ -61,7 +61,7 @@ Utility functions for [create-modern-web-dev](https://www.npmjs.com/package/crea
 - **getPageTemplatesWithChunk(pagesDirectory, scriptDirectory)** - Return all page templates with chunks
 
   ```js
-  getPageTemplatesWithChunk('./pages', './script');
+  getPageTemplatesWithChunk('./pages', './scripts');
 
   // Array of page templates with chunk
   [
@@ -80,14 +80,14 @@ Utility functions for [create-modern-web-dev](https://www.npmjs.com/package/crea
 
   ```js
   getPageTemplatesChunkEntryPoints(
-    getPageTemplatesWithChunk('./pages', './script'),
-    './script',
+    getPageTemplatesWithChunk('./pages', './scripts'),
+    './scripts',
   );
 
   // Entry points to pages with chunks
   {
-    index: './script/index/main.js',
-    'with-chunk': './script/with-chunk/main.js',
+    index: './scripts/index/main.js',
+    'with-chunk': './scripts/with-chunk/main.js',
   };
   ```
 

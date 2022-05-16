@@ -16,7 +16,7 @@ export const getPageNamesIn = (directory = './pages'): Array<string> =>
     )
     .map(({ name }) => path.parse(name).name);
 
-export const getScriptFoldersIn = (directory = './script'): Array<string> =>
+export const getScriptFoldersIn = (directory = './scripts'): Array<string> =>
   fs
     .readdirSync(directory, { withFileTypes: true })
     .filter((item: fs.Dirent) => {
@@ -60,7 +60,7 @@ export const htmlWebpackPluginTemplates = (
 
 export const getPageTemplatesWithChunk = (
   pagesDirectory = './pages',
-  scriptDirectory = './script',
+  scriptDirectory = './scripts',
 ): Array<PageTemplatesInterface> => {
   return createPageTemplates(
     getPageNamesIn(pagesDirectory),
@@ -72,7 +72,7 @@ export const getPageTemplatesWithChunk = (
 
 export const getPageTemplatesChunkEntryPoints = (
   pageTemplatesWithChunk: Array<PageTemplatesInterface>,
-  scriptDirectory = './script',
+  scriptDirectory = './scripts',
 ): PageTemplatesChunkInterface => {
   return pageTemplatesWithChunk.reduce(
     (entryPoints, item) => ({
