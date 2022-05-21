@@ -55,6 +55,7 @@ export const htmlWebpackPluginTemplates = (
     return new HtmlWebpackPlugin({
       filename: name,
       template: `./pages/${name}`,
+      chunks: [],
     });
   });
 

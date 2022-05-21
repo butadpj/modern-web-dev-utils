@@ -65,6 +65,7 @@ describe('Test utility functions', () => {
       new HtmlWebpackPlugin({
         filename: 'no-chunk.html',
         template: `./pages/no-chunk.html`,
+        chunks: [],
       }),
       new HtmlWebpackPlugin({
         filename: 'project-bracketour.html',
